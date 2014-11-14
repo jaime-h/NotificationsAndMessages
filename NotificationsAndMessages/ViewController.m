@@ -9,6 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UIButton *notifyButtonPressed;
+@property (strong, nonatomic) IBOutlet UIView *notifyLabel;
 
 @end
 
@@ -16,12 +18,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(TouchedMyButton:)
+                                                 name:@"TouchedMyButton"
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ChangedLabelChangeButton:)
+                                                 name:@"ChangedLabelChangeButton"
+                                               object:nil];
+
+
+}
+- (IBAction)onNotifyButtonPressed:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TouchedMyButton" object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)TouchedMyButton:(NSNotification *)button
+{
+    self.notifyLabel.backgroundColor = [UIColor purpleColor];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangedLabelChangeButton" object:nil];
 }
 
+-(void)ChangedLabelChangeButton:(NSNotification *)label
+{
+    self.notifyButtonPressed.backgroundColor = [UIColor purpleColor];
+    [self.notifyButtonPressed setTintColor:[UIColor lightGrayColor]];    // titleLabel.textColor = [UIColor lightGrayColor];
+}
 @end

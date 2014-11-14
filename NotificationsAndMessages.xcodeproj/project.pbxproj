@@ -412,6 +412,7 @@
 				6FD7D4021A16546A00A342D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6FD7D4031A16546A00A342D8 /* Build configuration list for PBXNativeTarget "NotificationsAndMessagesTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				6FD7D4051A16546A00A342D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
